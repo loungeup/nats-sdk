@@ -1,0 +1,30 @@
+{
+  "name": "loungeup/nats-sdk",
+  "description": "NATS SDK for PHP services",
+  "type": "library",
+  "license": "MIT",
+  "version": "dev-master",
+  "authors": [
+    {
+      "name": "LoungeUp",
+      "email": "devs@loungeup.com",
+      "homepage": "https://loungeup.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.4|^8.0",
+    "illuminate/log": "^8.0",
+    "loungeup/nats": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "LU\\Nats\\": "src/Nats/",
+      "LU\\Nats\\Tests\\": "tests"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "loungeup/resgate-sdk": "dev-master"
+  }
+}

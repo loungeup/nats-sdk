@@ -28,9 +28,7 @@ class NatsHandler
 
     public function subscribeRoute(Route $route, MessageDriver $messageDriver)
     {
-        $this->client->subscribe($route->getEvent(), function (
-            Message $message
-        ) use ($route, $messageDriver) {
+        $this->client->subscribe($route->getEvent(), function (Message $message) use ($route, $messageDriver) {
             if ($this->verbose) {
                 Log::debug(
                     "HIT: " .

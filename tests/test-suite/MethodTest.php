@@ -52,17 +52,10 @@ class MethodTest extends TestCase
         );
         $request = new Request($route, "call.testing.testers.12345.test", "");
         $request2 = new Request($route2, "call.testing.testers.test.12345", "");
-        $request3 = new Request(
-            $route3,
-            "call.testing.testers.12345.54321.test",
-            ""
-        );
+        $request3 = new Request($route3, "call.testing.testers.12345.54321.test", "");
 
         assertEquals(["test_id" => "12345"], $request->getEventParams());
         assertEquals(["test_id" => "12345"], $request2->getEventParams());
-        assertEquals(
-            ["test_id" => "12345", "test_number" => "54321"],
-            $request3->getEventParams()
-        );
+        assertEquals(["test_id" => "12345", "test_number" => "54321"], $request3->getEventParams());
     }
 }

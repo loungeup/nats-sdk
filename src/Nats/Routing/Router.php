@@ -49,22 +49,14 @@ class Router
         return preg_replace("/({.*?})/", "*", $eventRoute);
     }
 
-    public function checkActionCallExist(
-        string $controller,
-        string $method
-    ): bool {
+    public function checkActionCallExist(string $controller, string $method): bool
+    {
         return class_exists($this->controllerNamespace . "\\" . $controller) &&
-            method_exists(
-                $this->controllerNamespace . "\\" . $controller,
-                $method
-            );
+            method_exists($this->controllerNamespace . "\\" . $controller, $method);
     }
 
-    public function add(
-        string $eventRoute,
-        array $actionCall,
-        string $description = null
-    ) {
+    public function add(string $eventRoute, array $actionCall, string $description = null)
+    {
         [$controllerComplete, $method] = $actionCall;
         if ($this->checkActionCallExist($controllerComplete, $method)) {
             $controller = $this->extractControllerName($controllerComplete);
@@ -125,12 +117,7 @@ class Router
                 $rows,
                 $route->getName(),
                 $route->getEventRoute(),
-                $route->getNamespace() .
-                    "\\" .
-                    $route->getController() .
-                    "@\033[1m" .
-                    $route->getMethod() .
-                    "\e[0m",
+                $route->getNamespace() . "\\" . $route->getController() . "@\033[1m" . $route->getMethod() . "\e[0m",
                 $route->getDescription()
             );
         }

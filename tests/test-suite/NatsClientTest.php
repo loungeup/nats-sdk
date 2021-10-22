@@ -44,13 +44,11 @@ class NatsClientTest extends TestCase
         $natsHandler->subscribeRoute($route, $messageDriver);
 
         $response = "";
-        $this->client->request(
-            "call.testing.testers.test",
-            '{"test": "it works"}',
-            function ($message) use (&$response) {
-                $response = $message->getBody();
-            }
-        );
+        $this->client->request("call.testing.testers.test", '{"test": "it works"}', function ($message) use (
+            &$response
+        ) {
+            $response = $message->getBody();
+        });
         $this->client->wait(1);
         assertEquals('{"result":"it works"}', $response);
     }
@@ -70,13 +68,11 @@ class NatsClientTest extends TestCase
         $natsHandler->subscribeRoute($route, $messageDriver);
 
         $response = "";
-        $this->client->request(
-            "call.testing.testers.1.test",
-            '{"test": "it works"}',
-            function ($message) use (&$response) {
-                $response = $message->getBody();
-            }
-        );
+        $this->client->request("call.testing.testers.1.test", '{"test": "it works"}', function ($message) use (
+            &$response
+        ) {
+            $response = $message->getBody();
+        });
         $this->client->wait(1);
         assertEquals('{"result":"it works"}', $response);
     }
