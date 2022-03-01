@@ -1,11 +1,11 @@
 <?php
 
-namespace LU\Nats;
+namespace LoungeUp\NatsSdk;
 
 use Illuminate\Support\Facades\Log;
-use LU\Nats\Routing\Route;
-use Nats\Connection;
-use Nats\Message;
+use LoungeUp\Nats\Connection;
+use LoungeUp\Nats\Message;
+use LoungeUp\NatsSdk\Routing\Route;
 
 class NatsHandler
 {
@@ -34,9 +34,9 @@ class NatsHandler
                     "HIT: " .
                         $route->getEventRoute() .
                         " | SUBJECT: " .
-                        $message->getSubject() .
+                        $message->subject .
                         " | PAYLOAD: " .
-                        $message->getBody()
+                        $message->data,
                 );
             }
 
@@ -46,7 +46,7 @@ class NatsHandler
                 Log::debug("REPLY : " . $output);
             }
 
-            $message->reply($output);
+            $message->respond($output);
         });
 
         if ($this->verbose) {
@@ -57,11 +57,6 @@ class NatsHandler
     public function getClient(): Connection
     {
         return $this->client;
-    }
-
-    public function wait()
-    {
-        $this->client->wait();
     }
 
     public function setVerbose(bool $verbose)

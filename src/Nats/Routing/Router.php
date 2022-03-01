@@ -1,6 +1,6 @@
 <?php
 
-namespace LU\Nats\Routing;
+namespace LoungeUp\NatsSdk\Routing;
 
 class Router
 {
@@ -70,7 +70,7 @@ class Router
                 $controllerComplete,
                 $method,
                 $name,
-                $description
+                $description,
             );
             $this->routeCollection->addToCollections($currentRoute);
         }
@@ -118,7 +118,7 @@ class Router
                 $route->getName(),
                 $route->getEventRoute(),
                 $route->getNamespace() . "\\" . $route->getController() . "@\033[1m" . $route->getMethod() . "\e[0m",
-                $route->getDescription()
+                $route->getDescription(),
             );
         }
     }

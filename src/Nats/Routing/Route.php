@@ -1,6 +1,6 @@
 <?php
 
-namespace LU\Nats\Routing;
+namespace LoungeUp\NatsSdk\Routing;
 
 class Route
 {
@@ -27,7 +27,7 @@ class Route
         string $controller,
         string $method,
         string $name,
-        string $description = null
+        string $description = null,
     ) {
         $this->event = $event;
         $this->eventRoute = $eventRoute;

@@ -1,10 +1,10 @@
 <?php
 
-namespace LU\Nats\Tests;
+namespace LoungeUp\NatsSdk\Tests;
 
-use LU\Nats\Routing\Route;
-use LU\Nats\Routing\Router;
-use LU\Resgate\Message\Request;
+use LoungeUp\NatsSdk\Routing\Route;
+use LoungeUp\NatsSdk\Routing\Router;
+use LoungeUp\Resgate\Message\Request;
 use PHPUnit\Framework\TestCase;
 
 use function PHPUnit\Framework\assertArrayHasKey;
@@ -15,7 +15,7 @@ class MethodTest extends TestCase
     public function testShouldAddRoutes()
     {
         $router = Router::getInstance();
-        $router->setControllerNamespace("LU\Nats\Tests");
+        $router->setControllerNamespace("LoungeUp\NatsSdk\Tests");
         $router->setControllerSuffix("Controller");
         require __DIR__ . "/../routes/testing.php";
         $routes = $router->getRoutes();
@@ -29,26 +29,26 @@ class MethodTest extends TestCase
         $route = new Route(
             "call.testing.testers.*.test",
             "call.testing.testers.{test_id}.test",
-            "LU\Nats\Tests",
+            "LoungeUp\NatsSdk\Tests",
             "TestController",
             "test",
-            "testName"
+            "testName",
         );
         $route2 = new Route(
             "call.testing.testers.test.*",
             "call.testing.testers.test.{test_id}",
-            "LU\Nats\Tests",
+            "LoungeUp\NatsSdk\Tests",
             "TestController",
             "test",
-            "testName"
+            "testName",
         );
         $route3 = new Route(
             "call.testing.testers.*.*.test",
             "call.testing.testers.{test_id}.{test_number}.test",
-            "LU\Nats\Tests",
+            "LoungeUp\NatsSdk\Tests",
             "TestController",
             "test",
-            "testName"
+            "testName",
         );
         $request = new Request($route, "call.testing.testers.12345.test", "");
         $request2 = new Request($route2, "call.testing.testers.test.12345", "");

@@ -1,8 +1,8 @@
 <?php
 
-namespace LU\Nats\Tests;
+namespace LoungeUp\NatsSdk\Tests;
 
-use LU\Resgate\Controller\AbstractNatsController;
+use LoungeUp\Resgate\Controller\AbstractNatsController;
 
 class TestController extends AbstractNatsController
 {

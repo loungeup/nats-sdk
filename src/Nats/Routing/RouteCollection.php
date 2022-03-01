@@ -1,6 +1,6 @@
 <?php
 
-namespace LU\Nats\Routing;
+namespace LoungeUp\NatsSdk\Routing;
 
 class RouteCollection
 {

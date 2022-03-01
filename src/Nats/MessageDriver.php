@@ -1,9 +1,9 @@
 <?php
 
-namespace LU\Nats;
+namespace LoungeUp\NatsSdk;
 
-use LU\Nats\Routing\Route;
-use Nats\Message;
+use LoungeUp\NatsSdk\Routing\Route;
+use LoungeUp\Nats\Message;
 
 interface MessageDriver
 {
