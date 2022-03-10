@@ -28,5 +28,12 @@
     "phpunit/phpunit": "^9.5",
     "loungeup/resgate-sdk": "dev-master",
     "openswoole/ide-helper": "^4.10"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LoungeUp\\NatsSdk\\NatsServiceProvider"
+      ]
+    }
   }
 }
