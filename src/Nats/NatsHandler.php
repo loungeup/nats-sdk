@@ -46,7 +46,9 @@ class NatsHandler
                 Log::debug("REPLY : " . $output);
             }
 
-            $message->respond($output);
+            if ($message->reply && is_string($output)) {
+                $message->respond($output);
+            }
         });
 
         if ($this->verbose) {

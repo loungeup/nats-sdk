@@ -7,5 +7,5 @@ use LoungeUp\Nats\Message;
 
 interface MessageDriver
 {
-    public function handle(Message $message, Route $route): string;
+    public function handle(Message $message, Route $route);
 }
