@@ -17,7 +17,7 @@ class NatsClientTest extends TestCase
 
     public function testShouldSubscribeRoute()
     {
-        \Co\run(function () {
+        \co::run(function () {
             $client = Connection::createConnection("nats://" . NATS_HOST . ":" . NATS_PORT);
 
             $route = new Route(
