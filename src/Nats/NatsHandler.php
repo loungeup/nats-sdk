@@ -2,6 +2,7 @@
 
 namespace LoungeUp\NatsSdk;
 
+use Exception;
 use Illuminate\Support\Facades\Log;
 use LoungeUp\Nats\Connection;
 use LoungeUp\Nats\Message;
@@ -51,7 +52,15 @@ class NatsHandler
             }
 
             if ($message->reply && is_string($output)) {
-                $message->respond($output);
+                try {
+                    $message->respond($output);
+                } catch (Exception $e) {
+                    Log::error($e->getMessage(), [
+                        "subject" => $message->subject,
+                        "data" => $message->data,
+                        "trace" => $e->getTraceAsString(),
+                    ]);
+                }
             }
         });
 
