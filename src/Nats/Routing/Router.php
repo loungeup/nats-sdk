@@ -81,7 +81,7 @@ class Router
         return $this->routeCollection->getEventRoutes();
     }
 
-    public function getRoutesByService($name): ?Route
+    public function getRoutesByService($name): ?array
     {
         return $this->routeCollection->getRoutesByController($name);
     }
